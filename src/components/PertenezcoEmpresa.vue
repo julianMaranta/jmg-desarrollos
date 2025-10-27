@@ -1,44 +1,81 @@
 <template>
-  <section id="empresas" class="main-section">
-    <div class="section-content">
-      <div class="image-container hide-on-tablet hide-on-mobile">
-        <img src="/gente-ensea-inicio.png" alt="Mujer SEA">
-      </div>
-      <div class="content">
-        <h2 class="section-title">Empresas que se capacitan con SEA</h2>
-        <div class="company-grid">
-          <div class="company-row">
-            <router-link to="" class="course-link">
-              <img src="/caja-carrefour.png" alt="Carrefour" class="company-logo">
-            </router-link>
-
-            <router-link to="" class="course-link">
-              <img src="/caja-disney.png" alt="Disney" class="company-logo">
-            </router-link>
-
-            <router-link to="" class="course-link">
-              <img src="/caja-makro.png" alt="Makro" class="company-logo">
-            </router-link>
-
-            <router-link to="" class="course-link">
-              <img src="/caja-adidas-1.png" alt="ATE" class="company-logo">
-            </router-link>
+  <section id="empresa" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+        Soluciones para Empresas
+      </h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Contenido principal -->
+        <div>
+          <h3 class="text-2xl font-bold text-gray-800 mb-6">
+            ¿Perteneces a una empresa y necesitas soluciones digitales?
+          </h3>
+          <p class="text-lg text-gray-600 mb-6">
+            En JMG Desarrollos entendemos las necesidades específicas de las empresas. 
+            Creamos soluciones personalizadas que se adaptan a tus procesos y objetivos comerciales.
+          </p>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-white font-bold">✓</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800">Desarrollo a medida</h4>
+                <p class="text-gray-600">Soluciones personalizadas para tus necesidades específicas</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-white font-bold">✓</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800">Integración de sistemas</h4>
+                <p class="text-gray-600">Conectamos tus sistemas existentes con nuevas soluciones</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-white font-bold">✓</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-800">Soporte empresarial</h4>
+                <p class="text-gray-600">Atención prioritaria y soporte técnico especializado</p>
+              </div>
+            </div>
           </div>
-
-          <div class="company-row">
-            <router-link to="" class="course-link">
-              <img src="/caja-swiss.png" alt="Swiss" class="company-logo">
-            </router-link>
-            <router-link to="" class="course-link">
-              <img src="/caja-sac.png" alt="SAC" class="company-logo">
-            </router-link>
-            <router-link to="" class="course-link">
-              <img src="/caja-trenes.png" alt="Trenes" class="company-logo">
-            </router-link>
-          </div>
+          
+          <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">
+            Solicitar Cotización Empresarial
+          </button>
         </div>
-        <div class="button-container">
-          <SaberButton />
+        
+        <!-- Imagen/Ilustración -->
+        <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-8 text-white">
+          <div class="text-center">
+            <h4 class="text-2xl font-bold mb-4">Beneficios Empresariales</h4>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="text-center">
+                <div class="text-3xl font-bold mb-2">50%</div>
+                <div class="text-sm">Más eficiencia</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold mb-2">24/7</div>
+                <div class="text-sm">Soporte técnico</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold mb-2">100%</div>
+                <div class="text-sm">Personalizado</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold mb-2">+200</div>
+                <div class="text-sm">Clientes satisfechos</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -46,194 +83,5 @@
 </template>
 
 <script setup>
-import SaberButton from '@/components/SaberButton.vue'
+// Lógica del componente si es necesaria
 </script>
-
-<style scoped>
-#empresas {
-  margin-top: 0px;
-  background-color: #ebebeb;
-  background-image: url('/fondo-empresas.png'); /* Agrega la imagen de fondo */
-  background-size: 92%; /* Ajusta el tamaño de la imagen de fondo */
-  background-position: center bottom; /* Centra la imagen horizontalmente y la coloca en la parte inferior */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  position: relative;
-  z-index: 1; /* Asegúrate de que otros elementos se posicionen correctamente respecto al fondo */
-}
-
-.company-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.section-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2; /* Asegúrate de que el contenido esté encima de la imagen de fondo */
-}
-
-.image-container {
-  margin-right: 20px;
-  width: 35%;
-  margin-left: 60px;
-  margin-top: 40px;
-  transition: transform 0.3s;
-}
-
-.image-container:hover {
-  transform: scale(1.1);
-}
-
-.image-container img {
-  max-width: 100%;
-  height: auto;
-}
-
-.content {
-  flex: 1;
-}
-
-.section-title {
-  font-size: 35px;
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: rgb(77, 77, 77);
-}
-
-.company-grid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 5px;
-}
-
-.company-row {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.course-link {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  transition: transform 0.4s;
-}
-
-.course-link img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.course-link:hover {
-  transform: scale(1.2);
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px; /* Reduce el margen superior */
-  margin-left: 0px; /* Elimina el margen izquierdo */
-}
-
-/* Media Queries para tabletas */
-@media screen and (max-width: 1024px) and (min-width: 768px) {
-  .image-container,
-  .course-link {
-    transition: none;
-  }
-  .image-container:hover,
-  .course-link:hover {
-    transform: none;
-  }
-  #empresas {
-    padding: 30px;
-  }
-  .hide-on-tablet {
-    display: none; /* Oculta el contenedor de imagen para dispositivos de tamaño tablet */
-  }
-  .section-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  .section-title {
-    font-size: 50px; /* Ajusta el tamaño de la fuente del título */
-    margin-bottom: 20px;
-  }
-  .company-grid {
-    width: 100%;
-    align-items: center;
-  }
-  .company-row {
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-  }
-  .course-link {
-    width: 30%; /* Ajusta el ancho de los enlaces de los cursos */
-    margin-bottom: 10px;
-  }
-}
-
-
-/* Media Queries para pantallas aún más pequeñas, como móviles */
-@media screen and (max-width: 480px) {
-  .image-container,
-  .course-link {
-    transition: none;
-  }
-  .image-container:hover,
-  .course-link:hover {
-    transform: none;
-  }
-  #empresas {
-    background-image: none;
-    margin-top: -10px; /* Elimina la imagen de fondo para dispositivos móviles */
-  }
-  .section-content {
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 0px;
-  }
-  .image-container.hide-on-mobile {
-    display: none; /* Elimina el contenedor de imagen para dispositivos móviles */
-  }
-  .section-title {
-    font-size: 24px; /* Aumenta el tamaño de la fuente del título */
-    margin-bottom: 20px;
-  }
-  .company-grid {
-    width: 100%;
-    align-items: center;
-  }
-  .company-row {
-    flex-direction: row;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten a múltiples filas */
-    justify-content: center;
-    width: 100%;
-  }
-  .course-link {
-    width: 45%; /* Ajusta el ancho de los enlaces de los cursos para que quepan dos por fila */
-    margin-bottom: 10px;
-  }
-  .content {
-    text-align: center;
-    margin-top: 100px;
-  }
-
-  .btn-saber {
-    font-size: 18px;
-    padding: 8px 20px;
-  }
-}
-</style>

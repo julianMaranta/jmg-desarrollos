@@ -1,177 +1,93 @@
 <template>
-  <section id="libro" class="main-section">
-    <div class="content">
-      <h2 class="section-title">NOVEDADES</h2>
-      <p class="title-sea">SEA</p>
-      <p class="promo-text">¡Con tu donación nos ayudas a seguir difundiendo la Lengua de Señas, capacitar, desarrollar material de estudio, crear aplicaciones y mucho más!</p>
-      <p class="promo-text-2">Llevate tu <span class="highlight">LIBRO</span>: "Amor en tiempo de <span class="highlight">Lenguas de Seña"</span></p>
-      <p class="promo-text-2"></p>
-      <PromoButton/>
+  <section id="promo" class="py-16 bg-gradient-to-r from-amber-400 to-amber-600">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        🎉 Promociones Especiales
+      </h2>
+      <p class="text-xl text-amber-100 mb-8 max-w-3xl mx-auto">
+        Aprovecha nuestras ofertas limitadas para impulsar tu presencia digital
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Promo 1 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 transform hover:scale-105 transition-transform duration-300">
+          <div class="bg-red-500 text-white text-sm font-bold py-1 px-3 rounded-full inline-block mb-4">
+            30% OFF
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Sitio Web Básico</h3>
+          <div class="text-3xl font-bold text-gray-800 mb-2">$299.999</div>
+          <div class="text-lg text-gray-500 line-through mb-4">$428.570</div>
+          <ul class="text-sm text-gray-600 space-y-2 mb-6">
+            <li>✓ 5 páginas web</li>
+            <li>✓ Diseño responsive</li>
+            <li>✓ Formulario de contacto</li>
+            <li>✓ SEO básico</li>
+            <li>✓ Hosting por 1 año</li>
+          </ul>
+          <button class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-lg transition-colors duration-200">
+            Obtener Oferta
+          </button>
+        </div>
+
+        <!-- Promo 2 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 transform hover:scale-105 transition-transform duration-300 border-4 border-amber-300 relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <span class="bg-green-500 text-white text-sm font-bold py-1 px-4 rounded-full">
+              MÁS POPULAR
+            </span>
+          </div>
+          <div class="bg-green-500 text-white text-sm font-bold py-1 px-3 rounded-full inline-block mb-4">
+            25% OFF
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">E-commerce Premium</h3>
+          <div class="text-3xl font-bold text-gray-800 mb-2">$799.999</div>
+          <div class="text-lg text-gray-500 line-through mb-4">$1.066.665</div>
+          <ul class="text-sm text-gray-600 space-y-2 mb-6">
+            <li>✓ Catálogo ilimitado</li>
+            <li>✓ Carrito de compras</li>
+            <li>✓ Pasarela de pagos</li>
+            <li>✓ Panel administrativo</li>
+            <li>✓ SSL y seguridad</li>
+          </ul>
+          <button class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors duration-200">
+            Obtener Oferta
+          </button>
+        </div>
+
+        <!-- Promo 3 -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 transform hover:scale-105 transition-transform duration-300">
+          <div class="bg-blue-500 text-white text-sm font-bold py-1 px-3 rounded-full inline-block mb-4">
+            20% OFF
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-4">App Móvil</h3>
+          <div class="text-3xl font-bold text-gray-800 mb-2">$1.199.999</div>
+          <div class="text-lg text-gray-500 line-through mb-4">$1.499.999</div>
+          <ul class="text-sm text-gray-600 space-y-2 mb-6">
+            <li>✓ iOS y Android</li>
+            <li>✓ Diseño nativo</li>
+            <li>✓ Backend incluido</li>
+            <li>✓ Publicación en stores</li>
+            <li>✓ Soporte por 6 meses</li>
+          </ul>
+          <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-colors duration-200">
+            Obtener Oferta
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-12 bg-white rounded-2xl p-6 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">¿No encuentras lo que buscas?</h3>
+        <p class="text-gray-600 mb-6">
+          Contáctanos para una cotización personalizada según tus necesidades específicas.
+        </p>
+        <button class="bg-gray-800 hover:bg-black text-white font-bold py-3 px-8 rounded-lg transition-colors duration-200">
+          Solicitar Cotización Personalizada
+        </button>
+      </div>
     </div>
-    <div class="image-container">
-      <img src="/bolsa-libro-ensea-1.png" alt="Libro SEA">
-    </div>
-    
   </section>
-  
 </template>
 
 <script setup>
-import PromoButton from './PromoButton.vue'
+// Lógica del componente si es necesaria
 </script>
-
-<style scoped>
-.title-sea {
-  font-size: 85px;
-  margin-top: 0px;
-  margin-bottom: 30px;
-  margin-left: 40px;
-  color: #f57f25;
-  line-height: 1.1;
-}
-
-#libro {
-  display: flex;
-  justify-content: flex-start; /* Alinea el contenido a la izquierda */
-  align-items: center; /* Centra verticalmente el contenido */
-  background-color: #ebebeb;
-  padding: 10px;
-}
-
-.content {
-  flex: 1; /* Toma el espacio disponible */
-}
-
-.section-title {
-  line-height: 1.1;
-  font-size: 75px;
-  text-align: left; /* Alinea el título a la izquierda */
-  margin-bottom: 0px;
-  margin-left: 40px;
-  width: 100%;
-}
-
-.promo-text {
-  font-size: 20px;
-  text-align: left; /* Alinea el texto promocional a la izquierda */
-  margin-bottom: 40px;
-  margin-left: 50px;
-  line-height: 1.3;
-}
-
-.promo-text-2 {
-  font-size: 22px;
-  text-align: left; /* Alinea el texto promocional a la izquierda */
-  margin-bottom: 20px;
-  margin-left: 50px;
-  line-height: 1.5;
-}
-
-.image-container {
-  flex: 1; /* Toma el espacio disponible */
-  position: relative; /* Añade posicionamiento relativo para el contenedor */
-  overflow: hidden; /* Oculta cualquier desbordamiento */
-}
-
-.image-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('/fondo-iconos.png') no-repeat center center;
-  background-size: 80%; /* Ajusta el tamaño de la imagen de fondo */
-  transition: transform 0.2s ease-in-out;
-  z-index: 0; /* Asegura que la imagen de fondo esté detrás de la imagen principal */
-}
-
-.image-container img {
-  max-width: 95%; /* Ajusta el tamaño máximo de la imagen */
-  height: auto; /* Mantiene la proporción de la imagen */
-  margin-left: 0px;
-  margin-right: 70px;
-  margin-top: 40px;
-  border-radius: 20px;
-  position: relative; /* Mantiene la posición relativa */
-  z-index: 1; /* Asegura que la imagen esté por encima de la imagen de fondo */
-}
-
-.image-container:hover::before {
-  transform: scale(1.1); /* Agranda la imagen de fondo al pasar el mouse */
-}
-
-/* Estilo para el texto resaltado */
-.highlight {
-  color: #f57f25; /* Color naranja */
-}
-
-/* Media Queries para pantallas aún más pequeñas, como móviles */
-@media screen and (max-width: 768px) {
-  #libro {
-    flex-direction: column; /* Cambia la dirección del flex para móviles */
-    align-items: center; /* Centra los elementos horizontalmente */
-    text-align: center; /* Centra el texto */
-  }
-
-  .content {
-    margin-left: 0; /* Elimina el margen izquierdo */
-    text-align: center; /* Centra el texto */
-  }
-
-  .section-title {
-    text-align: center; /* Centra el título */
-    margin-left: 0; /* Elimina el margen izquierdo */
-    font-size: 50px;
-    
-  }
-  .title-sea{
-    font-size: 50px;
-  }
-
-  .promo-text, .promo-text-2 {
-    text-align: center; /* Centra el texto promocional */
-    margin-left: 0; /* Elimina el margen izquierdo */
-  }
-
-  .btn-promo {
-    margin-left: 0; /* Ajusta el margen izquierdo del botón */
-  }
-
-  .image-container img {
-    margin-left: 0; /* Elimina el margen izquierdo */
-    margin-top: 20px; /* Añade margen superior */
-  }
-}
-
-@media screen and (max-width: 1024px) and (min-width: 768px) {
-  .image-container::before,
-  .image-container:hover::before {
-    transition: none;
-  }
-  
-  .image-container:hover::before {
-    transform: none;
-  }
-  .section-title {
-    width: 180%;
-    font-size: 60px;
-  }
-  .title-sea {
-   
-    font-size: 70px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .image-container::before,
-  .image-container:hover::before {
-    transition: none;
-  }
-  
-  .image-container:hover::before {
-    transform: none;
-  }
-  
-}
-</style>

@@ -1,5 +1,6 @@
 // src/main.ts
-import './assets/main.css';
+import './style.css'
+
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -10,6 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faChalkboardUser, faGraduationCap, faSchool, faCertificate, faUser } from '@fortawesome/free-solid-svg-icons';
 import router from './router/routes'; // Asegúrate de que la ruta sea correcta
+
 
 // Configura Amplify con los outputs
 Amplify.configure(outputs);

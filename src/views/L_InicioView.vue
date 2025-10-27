@@ -1,494 +1,292 @@
 <script setup>
 import HeaderInicio from "../components/HeaderInicio.vue";
-import NuestrosCursos from "../components/NuestrosCursos.vue";
-import PertenezcoEmpresa from "../components/PertenezcoEmpresa.vue";
-import PromoSection from "../components/PromoSection.vue";
-import AboutSection from "../components/AboutSection.vue";
+import NuestrosServicios from "../components/NuestrosServicios.vue";
+import PorqueElegirnos from "../components/PorqueElegirnos.vue";
+import ProcesoDesarrollo from "../components/ProcesoDesarrollo.vue";
+import TestimoniosClientes from "../components/TestimoniosClientes.vue";
+import Contacto from "../components/Contacto.vue";
 
-import { useRouter } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
-const router = useRouter();
 const isMobile = ref(false);
 const isMenuOpen = ref(false);
-
-const navigateToSection = (sectionId) => {
-  router.push('/' + sectionId);
-  isMenuOpen.value = false;
-};
+const isScrolled = ref(false);
+const activeSection = ref('inicio');
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-onMounted(() => {
+const scrollToSection = (sectionId) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+    activeSection.value = sectionId;
+  }
+  isMenuOpen.value = false;
+};
+
+const checkMobile = () => {
   isMobile.value = window.innerWidth <= 768;
-  window.addEventListener('resize', () => {
-    isMobile.value = window.innerWidth <= 768;
-  });
+};
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+  
+  // Update active section based on scroll position
+  const sections = ['inicio', 'servicios', 'proceso', 'testimonios', 'contacto'];
+  const scrollPosition = window.scrollY + 100;
+  
+  for (const section of sections) {
+    const element = document.getElementById(section);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      const offsetBottom = offsetTop + element.offsetHeight;
+      
+      if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+        activeSection.value = section;
+        break;
+      }
+    }
+  }
+};
+
+onMounted(() => {
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile);
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 
 <template>
-   <nav class="menu">
-    <ul :class="{ 'show': isMenuOpen }" v-if="!isMobile || isMenuOpen" class="menu-dropdown">
-      <li @click="navigateToSection('')"><a>Inicio</a></li>
-      <li @click="navigateToSection('cursos')"><a>Cursos</a></li>
-      <li @click="navigateToSection('info-empresas')"><a>Empresas</a></li>
-      <li @click="navigateToSection('promo')"><a>Libro SEA</a></li>
-      <li @click="navigateToSection('nosotros')"><a>Nosotros</a></li>
-      <li @click="navigateToSection('contactanos')"><a>Contactanos</a></li>
-    </ul>
-    <div class="menu-toggle" @click="toggleMenu" v-if="isMobile">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-  <!-- Inicio HeroComponent -->
-  <HeaderInicio />
+  <div class="min-h-screen bg-white overflow-hidden flex flex-col items-center">
+    <!-- Navigation -->
+    <nav 
+      class="bg-white/95 backdrop-blur-xl text-gray-800 fixed w-full top-0 z-50 transition-all duration-500 border-b border-blue-200/50 flex justify-center"
+      :class="isScrolled ? 'py-3 shadow-2xl' : 'py-5'"
+    >
+      <div class="w-full max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <!-- Logo -->
+          <div class="flex items-center space-x-3 group cursor-pointer" @click="scrollToSection('inicio')">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+              <span class="text-white font-bold text-lg">JMG</span>
+            </div>
+            <div class="text-center">
+              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">JMG Desarrollos</span>
+              <div class="h-1 w-0 bg-gradient-to-r from-blue-600 to-blue-800 transition-all duration-500 group-hover:w-full mt-1 mx-auto"></div>
+            </div>
+          </div>
+          
+          <!-- Desktop Menu -->
+          <ul class="hidden md:flex space-x-8 items-center">
+            <li 
+              v-for="item in [
+                { id: 'inicio', name: 'Inicio' },
+                { id: 'servicios', name: 'Servicios' },
+                { id: 'proceso', name: 'Proceso' },
+                { id: 'testimonios', name: 'Testimonios' }
+              ]" 
+              :key="item.id"
+              @click="scrollToSection(item.id)"
+              class="cursor-pointer transition-all duration-500 relative group"
+              :class="activeSection === item.id ? 'text-blue-600 scale-110' : 'text-gray-600 hover:text-blue-500'"
+            >
+              <a class="font-semibold text-lg relative z-10">{{ item.name }}</a>
+              <div 
+                class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full transition-all duration-500 origin-center"
+                :class="activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'"
+              ></div>
+              <div class="absolute inset-0 bg-blue-600/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+            </li>
+            <li 
+              @click="scrollToSection('contacto')" 
+              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-8 py-3 rounded-xl transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group"
+            >
+              <span class="relative z-10">Contacto</span>
+              <div class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+            </li>
+          </ul>
 
-  <main>
-    <!-- Seccion nuestros cursos -->
-    <NuestrosCursos />
-    <!-- Seccion empresas -->
-    <PertenezcoEmpresa />
-    <!-- Seccion Promo -->
-    <PromoSection />
-    <!-- Seccion Nosotros -->
-    <AboutSection />
-  </main>
-  <footer id="contactanos" class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="/logo-ensea-footer.png" class="image-hands-header" alt="SEA Logo">
-        <p class="footer-rights">&copy; 2024 Todos los derechos reservados | SEA</p>
-      </div>
-      <div class="footer-section">
-        <h3>Enlaces útiles</h3>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#cursos">Cursos</a></li>
-          <li><a href="#empresas">Empresas</a></li>
-          <li><a href="#libro">Libro SEA</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Contacto</h3>
-        <p class="contact-info">Teléfono: +54 9 11 5527-1430</p>
-        <p class="contact-info">Email: lsa.sea.ong@gmail.com</p>
-      </div>
-      <div class="footer-section">
-        <h3>Síguenos</h3>
-        <ul class="social-icons">
-          <li><a href="https://www.facebook.com/senasenaccion/"><img src="/logo-facebook-footer.png" alt="Facebook"></a></li>
-          <li><a href="https://www.instagram.com/sea.ong"><img src="/logo-instagram-footer.png" alt="Instagram"></a></li>
-          <li><a href="https://twitter.com/sea_ong"><img src="/logo-twitter-footer.png" alt="Twitter"></a></li>
-          <li><a href="https://wa.me/5491155271430"><img src="/logo-whatsapp-footer.png" alt="WhatsApp"></a></li>
-        </ul>
-        <div class="additional-images">
-          <img src="/logo-sea-app.png" alt="Additional Image 1">
-          <img src="/logo-inter-sea-app-footer.png" alt="Additional Image 2">
+          <!-- Mobile Menu Button -->
+          <button 
+            @click="toggleMenu" 
+            class="md:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer relative z-60 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg shadow-lg"
+            aria-label="Menú"
+          >
+            <span class="w-6 h-0.5 bg-white mb-1 rounded transition-all duration-500" 
+                  :class="{ 'rotate-45 translate-y-1.5': isMenuOpen }"></span>
+            <span class="w-6 h-0.5 bg-white mb-1 rounded transition-all duration-500" 
+                  :class="{ 'opacity-0': isMenuOpen }"></span>
+            <span class="w-6 h-0.5 bg-white rounded transition-all duration-500" 
+                  :class="{ '-rotate-45 -translate-y-1.5': isMenuOpen }"></span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div 
+          v-if="isMobile && isMenuOpen" 
+          class="md:hidden bg-white/95 backdrop-blur-xl border-t border-blue-200/50 py-6 animate-slide-in-down rounded-b-2xl shadow-2xl mt-2 text-center"
+        >
+          <ul class="space-y-4">
+            <li 
+              v-for="item in [
+                { id: 'inicio', name: 'Inicio' },
+                { id: 'servicios', name: 'Servicios' },
+                { id: 'proceso', name: 'Proceso' },
+                { id: 'testimonios', name: 'Testimonios' }
+              ]" 
+              :key="item.id"
+              @click="scrollToSection(item.id)"
+              class="cursor-pointer transition-all duration-500 py-3 px-4 rounded-lg mx-4"
+              :class="activeSection === item.id ? 'bg-blue-600/10 text-blue-600 scale-105' : 'text-gray-600 hover:bg-blue-50'"
+            >
+              <a class="font-semibold text-lg flex items-center justify-center">
+                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-3 transition-all duration-500" 
+                     :class="activeSection === item.id ? 'scale-100' : 'scale-0'"></div>
+                {{ item.name }}
+              </a>
+            </li>
+            <li 
+              @click="scrollToSection('contacto')" 
+              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-6 py-4 rounded-lg transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg mt-4 mx-4 text-center"
+            >
+              <a>Contacto</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16 w-full flex flex-col items-center">
+      <HeaderInicio />
+      <NuestrosServicios />
+      <PorqueElegirnos />
+      <ProcesoDesarrollo />
+      <TestimoniosClientes />
+      <Contacto />
+    </main>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-8 right-8 z-40 space-y-4">
+      <!-- WhatsApp Button -->
+      <button 
+        class="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:rotate-12 group animate-bounce-slow"
+        aria-label="WhatsApp"
+      >
+        <span class="text-2xl">💬</span>
+        <div class="absolute inset-0 bg-white/20 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+      </button>
+      
+      <!-- Scroll to Top -->
+      <button 
+        @click="scrollToSection('inicio')"
+        class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 group"
+        aria-label="Volver arriba"
+      >
+        <span class="text-2xl transform transition-transform duration-500 group-hover:-translate-y-1">↑</span>
+        <div class="absolute inset-0 bg-white/10 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+      </button>
     </div>
-  </footer>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white py-16 w-full flex justify-center relative overflow-hidden">
+      <!-- Background Elements -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-600/10 rounded-full animate-pulse-slow"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-500/10 rounded-full animate-pulse-slower"></div>
+        <div class="absolute top-1/2 left-1/4 w-8 h-8 bg-blue-400/20 rounded-full animate-float"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-6 h-6 bg-blue-300/20 rounded-full animate-float-delayed"></div>
+      </div>
+      
+      <div class="w-full max-w-7xl mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+          <!-- Logo y Descripción -->
+          <div class="flex flex-col items-center md:items-start">
+            <div class="flex items-center space-x-3 justify-center md:justify-start mb-6 group cursor-pointer" @click="scrollToSection('inicio')">
+              <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                <span class="text-white font-bold text-xl">JMG</span>
+              </div>
+              <span class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">JMG Desarrollos</span>
+            </div>
+            <p class="text-gray-400 mb-6 max-w-xs text-center md:text-left leading-relaxed">
+              Creamos soluciones web innovadoras que impulsan el crecimiento de tu negocio con tecnología de vanguardia.
+            </p>
+            <p class="text-gray-500 text-sm text-center md:text-left">&copy; 2024 JMG Desarrollos. Todos los derechos reservados.</p>
+          </div>
+          
+          <!-- Enlaces rápidos -->
+          <div class="flex flex-col items-center md:items-start">
+            <h3 class="text-lg font-bold mb-6 text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">Enlaces Rápidos</h3>
+            <ul class="space-y-3">
+              <li v-for="link in ['inicio', 'servicios', 'proceso', 'testimonios']" :key="link">
+                <a 
+                  @click="scrollToSection(link)" 
+                  class="text-gray-400 hover:text-white transition-all duration-500 cursor-pointer transform hover:translate-x-2 inline-block group"
+                >
+                  <span class="flex items-center justify-center md:justify-start">
+                    <div class="w-1 h-1 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                    {{ link.charAt(0).toUpperCase() + link.slice(1) }}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Contacto -->
+          <div class="flex flex-col items-center md:items-start">
+            <h3 class="text-lg font-bold mb-6 text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">Contacto</h3>
+            <div class="space-y-4 text-gray-400 flex flex-col items-center md:items-start">
+              <p class="flex items-center transition-all duration-500 hover:text-white transform hover:translate-x-2 group justify-center md:justify-start">
+                <span class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-500">📞</span>
+                +54 9 11 5527-1430
+              </p>
+              <p class="flex items-center transition-all duration-500 hover:text-white transform hover:translate-x-2 group justify-center md:justify-start">
+                <span class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-500">✉️</span>
+                contacto@jmgdesarrollos.com
+              </p>
+              <p class="flex items-center transition-all duration-500 hover:text-white transform hover:translate-x-2 group justify-center md:justify-start">
+                <span class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-500">📍</span>
+                Buenos Aires, Argentina
+              </p>
+            </div>
+          </div>
+          
+          <!-- Redes sociales -->
+          <div class="flex flex-col items-center md:items-start">
+            <h3 class="text-lg font-bold mb-6 text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">Síguenos</h3>
+            <div class="flex justify-center md:justify-start space-x-3">
+              <a 
+                v-for="(social, index) in [
+                  { name: 'FB', icon: '📘', color: 'from-blue-600 to-blue-800' },
+                  { name: 'IG', icon: '📷', color: 'from-blue-500 to-blue-700' },
+                  { name: 'IN', icon: '💼', color: 'from-blue-700 to-blue-900' },
+                  { name: 'WA', icon: '💚', color: 'from-blue-600 to-blue-800' }
+                ]" 
+                :key="social.name" 
+                href="#" 
+                class="w-12 h-12 bg-gradient-to-br rounded-xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg"
+                :class="social.color"
+              >
+                <span class="text-white font-bold text-lg">{{ social.icon }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Divider -->
+        <div class="border-t border-blue-700/50 mt-12 pt-8 text-center">
+          <p class="text-gray-500 text-sm">
+            Hecho con ❤️ por JMG Desarrollos - Transformando ideas en realidad digital
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </template>
-
-<style scoped>
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0; /* Eliminado el margen */
-}
-
-.main-section {
-  flex: 1;
-  width: 100%;
-}
-
-.title {
-  font-size: 55px;
-}
-
-.icon {
-  font-size: 40px;
-}
-
-.section-title {
-  font-size: 55px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.section-description {
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* ESTILOS NAV BAR */
-
-@font-face {
-  font-family: 'DINNextRoundedLTPro-Light';
-  src: url('/path-to-your-fonts/DINNextRoundedLTPro-Light.woff2') format('woff2'),
-       url('/path-to-your-fonts/DINNextRoundedLTPro-Light.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.menu {
-  background-color: transparent; /* Fondo invisible */
-  color: black;
-  padding: 10px;
-  font-size: 10px;
-  font-weight: bold;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  top: 0;
-  z-index: 1000;
-  margin-bottom: -110px;
-  font-family: 'DINNextRoundedLTPro-Light', sans-serif; /* Fuente aplicada */
-}
-
-.menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  z-index: 1001;
-   /* Fondo blanco */
-}
-
-.menu ul.menu-dropdown {
-  right: 0;
-  left: unset;
-  border-radius: 10px;
-}
-
-.menu ul li {
-  margin-right: 20px;
-  padding: 0;
-  cursor: pointer;
- 
-}
-
-.menu ul li:last-child {
-  margin-right: 0;
-}
-
-.menu ul li a {
-  display: block;
-  color: black;
-  text-decoration: none;
-  padding: 10px;
-  font-size: 17px;
-  font-weight: 700;
-
-}
-
-.menu ul li:hover {
-  background-color: orange;
-  border-radius: 5px;
-}
-
-.menu ul li:hover a {
-  color: white;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1002;
-}
-
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background-color: black;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-@media screen and (max-width: 768px) {
-  .menu {
-    justify-content: space-between;
-  }
-
-  .menu ul {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 40px;
-    right: 0; /* Alinea el menú desplegable a la derecha */
-    background-color: white !important;  /* Fondo blanco */
-    width: 200px;
-    z-index: 1001;
-  }
-
-  .menu ul.show {
-    display: flex;
-  }
-
-  .menu ul li {
-    margin-right: 0;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-}
-
-/* Nuevas reglas para dispositivos de tamaño tablet */
-@media screen and (min-width: 481px) and (max-width: 1024px) {
-  .menu {
-    justify-content: space-between;
-  }
-
-  .menu ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    width: 100%;
-      /* Fondo blanco */
-  }
-
-  .menu ul li {
-    margin-right: 20px;
-    padding: 0;
-  }
-
-  .menu ul li a {
-    display: block;
-    color: black;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 17px;
-  }
-
-  .menu ul li:hover {
-    background-color: orange;
-    border-radius: 5px;
-  }
-
-  .menu ul li:hover a {
-    color: white;
-  }
-}
-@media screen and (max-width: 480px) {
-
-  .menu ul {
-   
-    background-color: white !important;  /* Fondo blanco */
-  }
-
-}
-
-/*ESTILOS FOOTER*/
-
-@font-face {
-  font-family: 'DINNextRoundedLTPro-Light';
-  src: url('/path-to-your-fonts/DINNextRoundedLTPro-Light.woff2') format('woff2'),
-       url('/path-to-your-fonts/DINNextRoundedLTPro-Light.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.image-hands-header {
-  width: 30%;
-  margin-top: 10px;
-  margin-left: 20px;
-  transition: transform 0.3s; /* Añade la transición */
-}
-
-.image-hands-header:hover {
-  transform: scale(1.4); /* Escala la imagen al pasar el mouse por encima */
-}
-
-.footer {
-  background-color: #763CA1;
-  color: white;
-  padding: 30px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra todo el contenido verticalmente */
-}
-
-.footer-container {
-  display: flex;
-  justify-content: space-between; /* Distribuye el contenido horizontalmente */
-  width: 100%;
-  margin-top: 20px; /* Agrega un margen superior */
-}
-
-.footer-logo {
-  flex: 1; /* Ocupa 1 parte del espacio disponible */
-  text-align: center; /* Centra la imagen */
-}
-
-
-
-.footer-section {
-  flex: 1;
-  text-align: center; /* Centra el contenido dentro de cada sección */
-}
-
-.footer-section h3 {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-ul {
-  list-style: none;
-  font-size: 20px;
-  padding: 0;
-}
-
-ul li {
-  margin-bottom: 8px;
-  font-size: 20px;
-}
-
-ul li a {
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
-  font-family: 'DINNextRoundedLTPro-Light', sans-serif; /* Fuente aplicada */
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center; /* Centra los íconos sociales */
-  padding: 0;
-}
-
-.social-icons li {
-  margin-right: 25px;
-}
-
-.social-icons li a img {
-  width: 45px; /* Ajusta el tamaño de las imágenes de los íconos */
-  height: 45px; /* Asegura que las imágenes mantengan una proporción adecuada */
-  transition: transform 0.3s; /* Añade la transición */
-}
-
-.social-icons li a img:hover {
-  transform: scale(1.5); /* Escala la imagen al pasar el mouse por encima */
-}
-
-.additional-images {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; /* Añade un margen superior para separar las imágenes adicionales de los íconos sociales */
-}
-
-.additional-images img {
-  width: 100px; /* Ajusta el tamaño de las imágenes adicionales */
-  height: 100px; /* Mantiene la proporción de las imágenes adicionales */
-  margin-right: 20px; /* Añade un margen derecho para espaciar las imágenes */
-  transition: transform 0.3s; /* Añade la transición */
-}
-
-.additional-images img:hover {
-  transform: scale(1.3); /* Escala la imagen al pasar el mouse por encima */
-}
-
-.footer-bottom {
-  margin-top: 20px;
-  text-align: center;
-  width: 100%; /* Ajusta el ancho */
-}
-
-.contact-info {
-  font-size: 20px;
-  margin-bottom: 8px;
-  font-family: 'DINNextRoundedLTPro-Light', sans-serif; /* Fuente aplicada */
-}
-
-.footer-bottom {
-  font-size: 15px;
-}
-
-.footer-rights {
-  font-size: 15px;
-  margin-top: 50px;
-  margin-left: 30px; /* Añade margen superior para separarlo de la imagen */
-  font-family: 'DINNextRoundedLTPro-Light', sans-serif; /* Fuente aplicada */
-}
-
-/* Media queries para dispositivos móviles */
-@media only screen and (max-width: 768px) {
-  .image-hands-header, .social-icons li a img, .additional-images img {
-    transition: none;
-    transform: none;
-  }
-  .footer-container {
-    flex-direction: column; /* Cambia a una disposición de columna */
-    align-items: center; /* Centra todos los elementos */
-  }
- 
-  .footer-rights {
-    font-size: 13px; /* Reduce el tamaño de la fuente para pantallas más pequeñas */
-  }
-  .additional-images {
-    flex-direction: column; /* Cambia a una disposición de columna en pantallas pequeñas */
-    align-items: center;
-  }
-  .additional-images img {
-    margin-bottom: 10px; /* Añade un margen inferior para espaciar las imágenes en pantallas pequeñas */
-    margin-right: 0; /* Elimina el margen derecho en pantallas pequeñas */
-  }
-  .footer-logo{
-    width: 60%;
-
-  }
-  .image-hands-header {
-    width: 30%;
-  }
-  .footer-rights {
-  font-size: 18px;
-  margin-top: 50px;
-  
-}
-}
-
-/* Media queries para dispositivos móviles */
-@media only screen and (max-width: 1024px) {
-  
-  .image-hands-header, .social-icons li a img, .additional-images img {
-    transition: none!important;
-    transform: none!important;
-  }
-
-  .image-hands-header {
-    width: 60%;
-  }
-  .footer-rights {
-  
-  margin-top: 20px;
-  
-}
-}
-/* Media query para notebooks estándar (ej: 1024px - 1366px) */
-@media screen and (min-width: 1024px) and (max-width: 1366px) {
-.menu ul li {
-    margin-right: 15px;
-    
-  }
-
-}
-</style>
