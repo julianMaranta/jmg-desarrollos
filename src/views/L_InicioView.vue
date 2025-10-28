@@ -70,10 +70,10 @@ onUnmounted(() => {
       class="bg-white/95 backdrop-blur-xl text-gray-800 fixed w-full top-0 z-50 transition-all duration-500 border-b border-blue-200/50 flex justify-center"
       :class="isScrolled ? 'py-3 shadow-2xl' : 'py-5'"
     >
-      <div class="w-full max-w-7xl mx-auto px-4">
+      <div class="w-full max-w-7xl mx-auto px-6">
         <div class="flex justify-between items-center">
-          <!-- Logo -->
-          <div class="flex items-center space-x-3 group cursor-pointer" @click="scrollToSection('inicio')">
+          <!-- Logo - Más separación entre logo y texto -->
+          <div class="flex items-center space-x-6 group cursor-pointer" @click="scrollToSection('inicio')">
             <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
               <span class="text-white font-bold text-lg">JMG</span>
             </div>
@@ -83,8 +83,8 @@ onUnmounted(() => {
             </div>
           </div>
           
-          <!-- Desktop Menu -->
-          <ul class="hidden md:flex space-x-8 items-center">
+          <!-- Desktop Menu - Más espacio entre items -->
+          <ul class="hidden md:flex space-x-12 items-center">
             <li 
               v-for="item in [
                 { id: 'inicio', name: 'Inicio' },
@@ -97,7 +97,7 @@ onUnmounted(() => {
               class="cursor-pointer transition-all duration-500 relative group"
               :class="activeSection === item.id ? 'text-blue-600 scale-110' : 'text-gray-600 hover:text-blue-500'"
             >
-              <a class="font-semibold text-lg relative z-10">{{ item.name }}</a>
+              <a class="font-semibold text-lg relative z-10 px-2 py-1">{{ item.name }}</a>
               <div 
                 class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full transition-all duration-500 origin-center"
                 :class="activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'"
@@ -106,7 +106,7 @@ onUnmounted(() => {
             </li>
             <li 
               @click="scrollToSection('contacto')" 
-              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-8 py-3 rounded-xl transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group"
+              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-10 py-3 rounded-xl transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group ml-4"
             >
               <span class="relative z-10">Contacto</span>
               <div class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
@@ -131,9 +131,9 @@ onUnmounted(() => {
         <!-- Mobile Menu -->
         <div 
           v-if="isMobile && isMenuOpen" 
-          class="md:hidden bg-white/95 backdrop-blur-xl border-t border-blue-200/50 py-6 animate-slide-in-down rounded-b-2xl shadow-2xl mt-2 text-center"
+          class="md:hidden bg-white/95 backdrop-blur-xl border-t border-blue-200/50 py-8 animate-slide-in-down rounded-b-2xl shadow-2xl mt-2 text-center"
         >
-          <ul class="space-y-4">
+          <ul class="space-y-6">
             <li 
               v-for="item in [
                 { id: 'inicio', name: 'Inicio' },
@@ -143,18 +143,18 @@ onUnmounted(() => {
               ]" 
               :key="item.id"
               @click="scrollToSection(item.id)"
-              class="cursor-pointer transition-all duration-500 py-3 px-4 rounded-lg mx-4"
+              class="cursor-pointer transition-all duration-500 py-4 px-6 rounded-lg mx-4"
               :class="activeSection === item.id ? 'bg-blue-600/10 text-blue-600 scale-105' : 'text-gray-600 hover:bg-blue-50'"
             >
               <a class="font-semibold text-lg flex items-center justify-center">
-                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-3 transition-all duration-500" 
+                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-4 transition-all duration-500" 
                      :class="activeSection === item.id ? 'scale-100' : 'scale-0'"></div>
                 {{ item.name }}
               </a>
             </li>
             <li 
               @click="scrollToSection('contacto')" 
-              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-6 py-4 rounded-lg transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg mt-4 mx-4 text-center"
+              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-8 py-4 rounded-lg transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg mt-6 mx-4 text-center"
             >
               <a>Contacto</a>
             </li>
@@ -209,7 +209,7 @@ onUnmounted(() => {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
           <!-- Logo y Descripción -->
           <div class="flex flex-col items-center md:items-start">
-            <div class="flex items-center space-x-3 justify-center md:justify-start mb-6 group cursor-pointer" @click="scrollToSection('inicio')">
+            <div class="flex items-center space-x-6 justify-center md:justify-start mb-6 group cursor-pointer" @click="scrollToSection('inicio')">
               <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                 <span class="text-white font-bold text-xl">JMG</span>
               </div>

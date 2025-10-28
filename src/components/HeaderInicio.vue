@@ -1,5 +1,5 @@
 <template>
-  <header id="inicio" class="min-h-screen w-full bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden flex items-center justify-center">
+  <header id="inicio" class="min-h-[80vh] w-full bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden flex items-center justify-center">
     <!-- Animated Background -->
     <div class="absolute inset-0 overflow-hidden w-full">
       <!-- Floating Particles -->
@@ -25,18 +25,18 @@
       </div>
     </div>
     
-    <div class="w-full px-4 text-center relative z-10 py-20 flex flex-col items-center">
+    <div class="w-full px-4 text-center relative z-10 py-16 flex flex-col items-center">
       <!-- Main Content -->
       <div class="animate-fade-in-up w-full flex flex-col items-center">
         <!-- Badge -->
-        <div class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-white/20 animate-pulse">
+        <div class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-12 border border-white/20 animate-pulse">
           <div class="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-ping"></div>
           <span class="text-sm font-semibold text-white/80">🚀 Listos para impulsar tu negocio</span>
         </div>
 
         <!-- Main Heading -->
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight text-center w-full">
-          <span class="block animate-slide-in-left bg-gradient-to-r from-white via-blue-200 to-blue-100 bg-clip-text text-transparent">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-12 leading-tight text-center w-full">
+          <span class="block animate-slide-in-left bg-gradient-to-r from-white via-blue-200 to-blue-100 bg-clip-text text-transparent mb-4">
             Impulsa Tu
           </span>
           <span class="block animate-slide-in-right delay-300 bg-gradient-to-r from-blue-200 via-blue-100 to-white bg-clip-text text-transparent">
@@ -45,15 +45,15 @@
         </h1>
 
         <!-- Subheading -->
-        <p class="text-xl md:text-2xl lg:text-3xl mb-12 text-white/80 max-w-6xl mx-auto leading-relaxed animate-fade-in-up delay-500 text-center w-full px-4">
+        <p class="text-xl md:text-2xl lg:text-3xl mb-20 text-white/80 max-w-6xl mx-auto leading-relaxed animate-fade-in-up delay-500 text-center w-full px-4">
           Creamos <span class="text-blue-300 font-semibold">experiencias web extraordinarias</span> que convierten visitantes en clientes leales
         </p>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in-up delay-700 w-full">
+        <!-- CTA Buttons - CON MÁS ESPACIO ARRIBA Y ABAJO -->
+        <div class="flex flex-col sm:flex-row gap-8 justify-center items-center py-10 my-8 animate-fade-in-up delay-700 w-full">
           <button 
             @click="scrollToSection('servicios')"
-            class="group relative bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-5 px-12 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-2xl hover:shadow-3xl text-lg overflow-hidden"
+            class="group relative bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-6 px-14 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-2xl hover:shadow-3xl text-lg overflow-hidden"
           >
             <span class="relative z-10 flex items-center">
               Explorar Servicios
@@ -64,7 +64,7 @@
           
           <button 
             @click="scrollToSection('contacto')"
-            class="group relative bg-transparent border-2 border-white/30 hover:border-white text-white hover:bg-white/10 font-bold py-5 px-12 rounded-2xl transition-all duration-500 transform hover:scale-105 text-lg backdrop-blur-sm overflow-hidden"
+            class="group relative bg-transparent border-2 border-white/30 hover:border-white text-white hover:bg-white/10 font-bold py-6 px-14 rounded-2xl transition-all duration-500 transform hover:scale-105 text-lg backdrop-blur-sm overflow-hidden"
           >
             <span class="relative z-10 flex items-center">
               <span class="mr-3">💬</span>
@@ -75,11 +75,11 @@
         </div>
 
         <!-- Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto animate-fade-in-up delay-1000 w-full px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-6xl mx-auto animate-fade-in-up delay-1000 w-full px-4 mt-20">
           <div v-for="(stat, index) in stats" :key="index" 
                class="text-center transform transition-all duration-500 hover:scale-110 group">
             <div class="relative">
-              <div class="text-3xl md:text-5xl font-black text-white mb-2 animate-count-up" 
+              <div class="text-3xl md:text-5xl font-black text-white mb-4 animate-count-up" 
                    :data-target="stat.value"
                    :class="stat.gradient">
                 {{ stat.value }}
@@ -91,16 +91,6 @@
             </div>
             <div class="text-white/60 text-sm font-semibold uppercase tracking-wider">{{ stat.label }}</div>
           </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-      <div class="flex flex-col items-center">
-        <span class="text-white/60 text-sm mb-2">Desplazar</span>
-        <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </div>

@@ -13,6 +13,8 @@
           <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-3 animate-pulse"></div>
           <span class="text-sm font-semibold text-gray-600">💬 LO QUE DICEN NUESTROS CLIENTES</span>
         </div>
+
+        <div class="h-5 w-full"></div>
         
         <h2 class="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-800 via-blue-800 to-blue-900 bg-clip-text text-transparent text-center">
           Historias de Éxito
@@ -21,6 +23,8 @@
           Más de 200 empresas confían en nosotros para transformar su presencia digital y alcanzar nuevos niveles de crecimiento
         </p>
       </div>
+
+      <div class="h-10 w-full"></div>
 
       <!-- Testimonials Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 w-full justify-items-center">
@@ -121,11 +125,14 @@
         </div>
       </div>
 
+      <div class="h-10 w-full"></div>
+
       <!-- Client Logos -->
       <div class="text-center w-full">
         <h3 class="text-2xl font-black text-gray-800 mb-12 bg-gradient-to-r from-gray-800 to-blue-800 bg-clip-text text-transparent text-center">
           Empresas que Confían en Nosotros
         </h3>
+        <div class="h-5 w-full"></div>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60 justify-items-center">
           <div v-for="i in 6" :key="i" 
                class="bg-white/80 backdrop-blur-sm rounded-2xl h-24 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-110 group border border-blue-200/50 w-full max-w-40">
@@ -138,6 +145,8 @@
           </div>
         </div>
       </div>
+
+      <div class="h-10 w-full"></div>
 
       <!-- CTA Section -->
       <div class="text-center mt-20 w-full">
