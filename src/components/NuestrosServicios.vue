@@ -45,14 +45,14 @@
               <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center mb-16 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                 <span class="text-3xl text-white">🌱</span>
               </div>
-              <h3 class="text-2xl font-black text-gray-800 mb-4">Startup</h3>
+              <h3 class="text-2xl font-black text-gray-800 mb-4">Inicial</h3>
               <p class="text-gray-500 font-semibold">Ideal para Emprendedores</p>
             </div>
             
             <!-- Price -->
             <div class="p-6 bg-gradient-to-r from-blue-50 to-white text-center flex-shrink-0">
-              <div class="text-4xl font-black text-gray-800 mb-1">$299.999</div>
-              <div class="text-gray-500 text-sm">Pago único • Incluye hosting 1 año</div>
+              <div class="text-4xl font-black text-gray-800 mb-1">$400.000</div>
+              <div class="text-gray-500 text-sm">Incluye hosting 1 año</div>
             </div>
             
             <!-- Features -->
@@ -93,14 +93,14 @@
               <div class="w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-16 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                 <span class="text-3xl text-white">🚀</span>
               </div>
-              <h3 class="text-2xl font-black text-gray-800 mb-4">Growth</h3>
+              <h3 class="text-2xl font-black text-gray-800 mb-4">Estándar</h3>
               <p class="text-gray-500 font-semibold">Pequeñas Empresas</p>
             </div>
             
             <!-- Price -->
             <div class="p-6 bg-gradient-to-r from-blue-50 to-blue-100 text-center flex-shrink-0">
-              <div class="text-4xl font-black text-gray-800 mb-1">$599.999</div>
-              <div class="text-gray-500 text-sm">Pago único • SEO Avanzado Incluido</div>
+              <div class="text-4xl font-black text-gray-800 mb-1">$800.000</div>
+              <div class="text-gray-500 text-sm">SEO Avanzado Incluido</div>
             </div>
             
             <!-- Features -->
@@ -135,14 +135,14 @@
               <div class="w-24 h-24 bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl flex items-center justify-center mb-16 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                 <span class="text-3xl text-white">⭐</span>
               </div>
-              <h3 class="text-2xl font-black text-gray-800 mb-4">Pro</h3>
+              <h3 class="text-2xl font-black text-gray-800 mb-4">Profesional</h3>
               <p class="text-gray-500 font-semibold">Negocios en Crecimiento</p>
             </div>
             
             <!-- Price -->
             <div class="p-6 bg-gradient-to-r from-blue-100 to-blue-200 text-center flex-shrink-0">
-              <div class="text-4xl font-black text-gray-800 mb-1">$999.999</div>
-              <div class="text-gray-500 text-sm">Pago único • E-commerce Básico</div>
+              <div class="text-4xl font-black text-gray-800 mb-1">$1.400.000</div>
+              <div class="text-gray-500 text-sm">Gestión de Datos Incluido</div>
             </div>
             
             <!-- Features -->
@@ -161,7 +161,7 @@
             <!-- CTA -->
             <div class="p-6 pt-0 flex-shrink-0">
               <button class="w-full bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white font-bold py-4 px-6 rounded-xl transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group">
-                <span class="relative z-10">Ir Pro</span>
+                <span class="relative z-10">Ir Profesional</span>
                 <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </button>
             </div>
@@ -177,14 +177,14 @@
               <div class="w-24 h-24 bg-gradient-to-br from-blue-800 to-blue-950 rounded-2xl flex items-center justify-center mb-16 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
                 <span class="text-3xl text-white">🏢</span>
               </div>
-              <h3 class="text-2xl font-black text-gray-800 mb-4">Enterprise</h3>
+              <h3 class="text-2xl font-black text-gray-800 mb-4">Empresa</h3>
               <p class="text-gray-500 font-semibold">Soluciones Corporativas</p>
             </div>
             
             <!-- Price -->
             <div class="p-6 bg-gradient-to-r from-blue-200 to-blue-300 text-center flex-shrink-0">
-              <div class="text-4xl font-black text-gray-800 mb-1">$1.999.999</div>
-              <div class="text-gray-500 text-sm">Pago único • Soporte 24/7</div>
+              <div class="text-4xl font-black text-gray-800 mb-1">Hablemos</div>
+              <div class="text-gray-500 text-sm">Aplicaciones Web & Mobile</div>
             </div>
             
             <!-- Features -->
@@ -203,7 +203,7 @@
             <!-- CTA -->
             <div class="p-6 pt-0 flex-shrink-0">
               <button class="w-full bg-gradient-to-r from-blue-800 to-blue-950 hover:from-blue-900 hover:to-black text-white font-bold py-4 px-6 rounded-xl transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group">
-                <span class="relative z-10">Solicitar Demo</span>
+                <span class="relative z-10">Enviar Mensaje</span>
                 <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </button>
             </div>
@@ -216,39 +216,37 @@
 
 <script setup>
 const basicFeatures = [
-  '5 páginas web premium',
+  'Página web con 5 secciones',
   'Diseño responsive avanzado',
-  'Formularios de contacto inteligentes',
   'SEO básico optimizado',
   'Hosting premium 1 año incluido',
   'Certificado SSL gratuito'
 ];
 
 const standardFeatures = [
-  '10 páginas web personalizadas',
+  'Animaciones',
   'Diseño UX/UI exclusivo',
-  'Blog corporativo integrado',
-  'SEO avanzado + Analytics',
-  'Integración redes sociales',
-  'Backup automático mensual'
+  'SEO avanzado',
+  'Formularios de contacto',
+  'Videos e imágenes'
+  
 ];
 
 const professionalFeatures = [
-  'Páginas ilimitadas',
   'Diseño premium personalizado',
-  'E-commerce básico integrado',
-  'CMS personalizado',
-  'Soporte prioritario 12/7',
-  'Mantenimiento 6 meses'
+  'Branding',
+  'Panel de Administrador',
+  'Información y Contenido Editable',
+  'Soporte prioritario'
 ];
 
 const enterpriseFeatures = [
-  'Desarrollo completamente a medida',
-  'E-commerce avanzado escalable',
-  'Integración API personalizada',
-  'Soporte técnico 24/7 dedicado',
-  'Mantenimiento anual incluido',
-  'Consultoría estratégica digital'
+  'Desarrollo 100% a medida',
+  'Consultoría estratégica digital',
+  'Desarrollo Front-End + Back-End',
+  'Soporte Prioritario',
+  'Backup Garantizado',
+  'Seguridad informática'
 ];
 
 const scrollToSection = (sectionId) => {
